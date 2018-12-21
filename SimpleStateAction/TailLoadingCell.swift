@@ -15,9 +15,9 @@ final class TailLoadingCell: UITableViewCell {
   override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
     super.init(style: style, reuseIdentifier: reuseIdentifier)
     
+    contentView.heightAnchor.constraint(equalToConstant: 50.0).isActive = true
     contentView.addSubview(spinner)
     spinner.translatesAutoresizingMaskIntoConstraints = false
-    contentView.heightAnchor.constraint(equalToConstant: 50.0).isActive = true
     spinner.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
     spinner.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
     spinner.startAnimating()
