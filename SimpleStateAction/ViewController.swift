@@ -36,10 +36,6 @@ class StateActionViewController: UITableViewController {
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let rowCount: Int = tableView.numberOfRows(inSection: 0)
     
-    if indexPath.row == rowCount - 1 {
-      self.willBeginBatchFetch()
-    }
-    
     if state.fetchingMore && indexPath.row == rowCount - 1 {
       let cell: TailLoadingCell = TailLoadingCell(style: .default, reuseIdentifier: nil)
       return cell
@@ -61,6 +57,16 @@ class StateActionViewController: UITableViewController {
     }
     return count
   }
+  
+//  override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//    let currentOffSetY = scrollView.contentOffset.y
+//    let contentHeight = scrollView.contentSize.height
+//    let screenHeight = UIScreen.main.bounds.height
+//    let screenfullsBeforeBottom = (contentHeight - currentOffSetY) / screenHeight
+//    if screenfullsBeforeBottom < 1.0 {
+//      self.willBeginBatchFetch()
+//    }
+//  }
 
   private func willBeginBatchFetch() {
     DispatchQueue.main.async {
